@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const name = 'Tom';
+  const naver = {
+    name : "네이버",
+    url:"http://naver.com",
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          My Voca
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <h1
+        style={{
+          color:"red",
+          backgroundColor:"yellowgreen"
+        }}
         >
-          Hot Module Replacement(HMR)
-        </a>
-      </header>
+          Hello, {name},
+        </h1>
+        <a href={naver.url}>{naver.name}</a>
     </div>
   );
 }
