@@ -1,22 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useState, useEffect} from 'react';
+import Timer from './component/Timer';
 
 function App() {
-  const [count, setCount] = useState(1);
-  const handleCountUpdate = ()=>{
-    setCount(count+1);
-  };
-
-  // For evry rendering, called... 
-  useEffect(()=>{
-    console.log("Rendering...");
-  });
+  const [showTimer, setShowTimer] = useState(false);
 
   return (
     <div className="App">
-      <button onClick={handleCountUpdate} > Update </button>
-      <span> count: {count} </span>
+      
+      <button onClick={()=>setShowTimer(!showTimer)}> Toggle </button>
+      {showTimer && <Timer />}
     </div>
   );
 }
