@@ -1,15 +1,23 @@
+import React, { useEffect, useRef } from 'react';
 import './App.css';
-import React, {useState, useEffect} from 'react';
-import Timer from './component/Timer';
 
 function App() {
-  const [showTimer, setShowTimer] = useState(false);
+  const inputRef = useRef();
+  useEffect(()=>{
+    inputRef.current.focus();
+    // console.log(inputRef); 
+  },[]);
+
+  const login = ()=>{
+    // alert('Welcome ${inputRef.current.value}!');
+    console.log(inputRef.current);
+    inputRef.current.focus();
+  };
 
   return (
-    <div className="App">
-      
-      <button onClick={()=>setShowTimer(!showTimer)}> Toggle </button>
-      {showTimer && <Timer />}
+    <div>
+      <input ref={inputRef} type='text' placeholder='username' />
+      <button onClick={login}>Login</button>
     </div>
   );
 }
