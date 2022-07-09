@@ -1,44 +1,50 @@
 import './App.css';
-import {useState,useMemo} from 'react'
+import {useState, useReducer} from 'react'
 
-const hardCalculator=(number)=>{
-  // consuming long time
-  console.log('hard calculate number=',number);
-  return number+10000;
-}
-const easyCalculator=(number)=>{
-  // consuming short time
-  console.log('easy calculate number=',number);
-  return number+1;
-}
+const ACTION_TYPE = {
+  deposit: 'deposit',
+  withdraw:'withdraw',
+};
+
+const reducer = (state, action)=>{
+  console.log("[reducer]", state, action);
+  switch (action.type) {
+    case ACTION_TYPE.deposit:
+      return state+action.payload;
+    case ACTION_TYPE.withdraw:
+      return state-action.payload;
+    default:
+      return state;
+  }
+};
 
 function App() {
-  const [hardNumber, setHardNumber] = useState(1);
-  const [easyNumber, setEasyNumber] = useState(1);
+  const [number, setNumber] = useState(0);
+  const [money, dispatch] = useReducer(reducer,0);
 
-  const hardSum = useMemo(()=>hardCalculator(hardNumber),[hardNumber]);
-  const easySum = useMemo(()=>easyCalculator(easyNumber),[easyNumber]);
-    
   return (
     <div>
-      <h2> Hard Calculation</h2> 
-      <input 
-        type='number' 
-        value={hardNumber}
-        onChange={(e)=>{
-          console.log(e.target.value);
-          setHardNumber(parseInt(e.target.value));
-        }} />
-      <p> Hard Sum = {hardSum} </p>
-
-      <h2> Easy Calculation</h2> 
-      <input 
-        type='number' 
-        value={easyNumber} 
-        onChange={(e)=>{
-          setEasyNumber(parseInt(e.target.value));
-        }} />      
-      <p> Easy Sum = {easySum} </p>
+      <p> Satement: {money} </p>
+      <input
+        type='number'
+        value={number}
+        step='1000' 
+        onChange={(e)=>setNumber(parseInt(e.target.value))} 
+      />;
+      <button 
+        onClick={()=>{
+          if(number>0)
+            dispatch({type:ACTION_TYPE.deposit, payload:number} )}}
+      >
+        DEPOSIT
+      </button>
+      <button 
+        onClick={()=>{
+          if(number>0)
+            dispatch({type:ACTION_TYPE.withdraw, payload:number} )}}
+      >
+        WITHDRAW
+      </button> 
     </div>
   );
 }
