@@ -28,7 +28,7 @@ function pickFruitsOne(){
 }
 
 
-export default function Fruits(){
+export default function (){
     pickFruits().then(console.log);
     pickFruitsAll().then(console.log);    
     pickFruitsOne().then(console.log);

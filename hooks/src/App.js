@@ -1,14 +1,11 @@
 import './App.css';
 import React from 'react'
-import { Bake } from './async/bake';
-import  Fruits from './async/fruits';
+import Comparison from './async/comparison';
 
 function App() {
-
   return (
     <div>
-      <Bake />
-      <Fruits />   
+      <Comparison />
     </div>
   );
 }
