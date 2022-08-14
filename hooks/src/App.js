@@ -1,13 +1,12 @@
 import './App.css';
 import React from 'react'
 
-import Objects from './component/objects'
+import Arrays from './component/array-api'
 
 function App() {
   return (
     <div>
-      <script> console.clear(); </script>
-      <Objects />
+      <Arrays />
     </div>
   );
 }
