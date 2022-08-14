@@ -1,11 +1,13 @@
 import './App.css';
 import React from 'react'
-import Comparison from './async/comparison';
+
+import Objects from './component/objects'
 
 function App() {
   return (
     <div>
-      <Comparison />
+      <script> console.clear(); </script>
+      <Objects />
     </div>
   );
 }
